@@ -2,9 +2,12 @@ import java.sql.*;
 
 public class DatabaseManager {
     private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/vroomrentals?useSSL=false";
+
+    // private static final String DB_URL = "jdbc:mysql://localhost:3306/vroomrentals?useSSL=false";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/vroomrentals?useSSL=false&allowPublicKeyRetrieval=true";
+
     private static final String USER = "root";
-    private static final String PASSWORD = "********";
+    private static final String PASSWORD = "SoftwareTesting";
     
     private Connection connection;
     
