@@ -33,8 +33,8 @@ A **Car Rental System** developed in **Java** with **MySQL** for database manage
 Run the following SQL commands to set up the `car_rental` database and create the required tables (`users`, `customers`, `drivers`, `carInfo`, `rentalinfo`):
 
 ```sql
-CREATE DATABASE car_rental;
-USE car_rental;
+CREATE DATABASE vroomrentals;
+USE vroomrentals;
 
 CREATE TABLE users (
     user_id INT PRIMARY KEY,
@@ -42,6 +42,8 @@ CREATE TABLE users (
     password VARCHAR(255),
     role VARCHAR(30)
 );
+INSERT INTO USERS (1,"admin",1234,"admin");
+INSERT INTO USERS (2,"test",1234,"user");
 
 CREATE TABLE customers (
     customer_id INT PRIMARY KEY,
@@ -83,11 +85,11 @@ CREATE TABLE rentalinfo (
 ```
 Run the mysql command in sample.sql in bin folder to insert inputs for drivers and car info inside the database folder. One could insert their own data rows also in the table. 
 ### 2. Update Database Credentials
-In the `CarRentalSystem.java` file, update the following fields with your MySQL username, password, and database URL:
+In the `Database.java` file, update the following fields with your MySQL username, password, and database URL:
 
 ```java
-String url = "jdbc:mysql://localhost:3306/car_rental";
-String user = "your_mysql_user";
+String url = "jdbc:mysql://localhost:3306/vroomrentals";
+String user = "root";
 String password = "your_mysql_password";
 ```
 
@@ -98,8 +100,8 @@ Download the MySQL JDBC driver (mysql-connector-java) from the MySQL official we
 After setting up the database and credentials, compile and run the program using the following commands:
 
 ```bash
-javac CarRentalSystem.java
-java CarRentalSystem
+mvn clean package
+java -jar target/vroom-app.jar
 ```
 
 ### 5. Logging In
