@@ -6,7 +6,7 @@ A **Car Rental System** developed in **Java** with **MySQL** for database manage
 - **User**: Book a car rental and view their rental records.
 
 
-Kindly check the Mutation_testing_Report.pdf for mutation testing related details of the project
+Kindly check the [Mutation_testing_Report.pdf](https://github.com/NikaYz/Car-Rental-System/blob/main/Mutation_testing_report.pdf) for mutation testing related details of the project
 
 ## Features
 
@@ -134,4 +134,5 @@ java -jar target/vroom-app.jar
 
 ## Conclusion
 This Car Rental System allows both admins and users to perform their respective roles effectively. Admins can manage users, rental records, cars, and drivers, while users can book rentals and view their own rental history. The system demonstrates how to use JDBC to connect a Java application to a MySQL database for storing and retrieving data.
+
 
