@@ -15,6 +15,9 @@ public class DatabaseManager {
         Class.forName(JDBC_DRIVER);
         this.connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
     }
+    public DatabaseManager(String url, String user, String password) throws SQLException {
+        this.connection = DriverManager.getConnection(url, user, password);
+    }
     
     public Connection getConnection() {
         return connection;

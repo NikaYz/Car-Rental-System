@@ -68,4 +68,8 @@ public class DriverService {
         rs.close();
         return count;
     }
+    public int calculateScore(int currentScore) {
+        currentScore++; 
+        return currentScore;
+    }
 }

@@ -1,38 +1,3 @@
-<!-- <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.vroomrentals</groupId>
-    <artifactId>vroom-app</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-    </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version> </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.0</version>
-                <configuration>
-                    <mainClass>MainApplication</mainClass> 
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-</project> -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -76,23 +41,30 @@
         <dependency>
             <groupId>org.pitest</groupId>
             <artifactId>pitest-junit5-plugin</artifactId>
-            <version>1.1.0</version> <scope>test</scope>
+            <version>1.1.0</version> 
+            <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.2.224</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 
     <build>
         <plugins>
-            <!-- <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.6.2</version>
                 <configuration>
-                    <source>${maven.compiler.source}</source> 
-                    <target>${maven.compiler.target}</target> 
+                    <mainClass>MainApplication</mainClass>
                 </configuration>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -106,72 +78,57 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>MainApplication</mainClass> 
+                                    <mainClass>MainApplication</mainClass>
                                 </transformer>
                             </transformers>
                             <finalName>${project.artifactId}</finalName>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin> -->
-            <plugin>
-    <groupId>org.codehaus.mojo</groupId>
-    <artifactId>exec-maven-plugin</artifactId>
-    <version>3.6.2</version>
-    <configuration>
-        <mainClass>MainApplication</mainClass>
-    </configuration>
-</plugin>
-
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-shade-plugin</artifactId>
-    <version>3.5.1</version>
-    <executions>
-        <execution>
-            <phase>package</phase>
-            <goals>
-                <goal>shade</goal>
-            </goals>
-            <configuration>
-                <transformers>
-                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                        <mainClass>MainApplication</mainClass>
-                    </transformer>
-                </transformers>
-                <finalName>${project.artifactId}</finalName>
-            </configuration>
-        </execution>
-    </executions>
-</plugin>
+            </plugin>
 
             <plugin>
-    <groupId>org.pitest</groupId>
-    <artifactId>pitest-maven</artifactId>
-    <version>1.15.0</version>
-    <configuration>
-        <targetClasses>
-            <param>CarService</param>
-            <param>CustomerService</param>
-            <param>DriverService</param>
-            <param>RentalService</param>
-            <param>UserService</param>
-        </targetClasses>
-        
-        <targetTests>
-    <param>CustomerServiceTest</param>
-    <param>CarServiceTest</param>
-    <param>DriverServiceTest</param>
-    <param>RentalServiceTest</param>
-    <param>UserServiceTest</param>
-</targetTests>
-        
-        <mutationThreshold>75</mutationThreshold> 
-        <outputFormats>
-            <param>HTML</param>
-        </outputFormats>
-    </configuration>
-    </plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.15.0</version>
+                <configuration>
+                    <targetClasses>
+                        <param>CarService</param>
+                        <param>CustomerService</param>
+                        <param>DriverService</param>
+                        <param>RentalService</param>
+                        <param>UserService</param>
+                    </targetClasses>
+                    
+                    <targetTests>
+                        <param>CustomerServiceTest</param>
+                        <param>CarServiceTest</param>
+                        <param>DriverServiceTest</param>
+                        <param>RentalServiceTest</param>
+                        <param>UserServiceTest</param>
+                        <param>IntegrationTest</param>
+                    </targetTests>
+                    
+                    <mutationThreshold>75</mutationThreshold> 
+                    <outputFormats>
+                        <param>HTML</param>
+                    </outputFormats>
+                    <!-- <mutators> -->
+                    <!-- <mutators>
+    <mutator>MATH</mutator>              <mutator>INCREMENTS</mutator>        <mutator>INVERT_NEGS</mutator>       <mutator>CONDITIONALS_BOUNDARY</mutator> <mutator>NEGATE_CONDITIONALS</mutator>   <mutator>REMOVE_CONDITIONALS</mutator>   </mutators> -->
+        <!-- <mutator>STRONGER</mutator>
+        <mutator>VOID_METHOD_CALLS</mutator>
+        <mutator>NON_VOID_METHOD_CALLS</mutator>
+        <mutator>EXPERIMENTAL_MEMBER_VARIABLE</mutator>
+
+        <mutator>MATH</mutator>              <mutator>INCREMENTS</mutator>        <mutator>CONDITIONALS_BOUNDARY</mutator> <mutator>REMOVE_CONDITIONALS</mutator>   </mutators> -->
+                    <!-- <mutators>
+                        <mutator>VOID_METHOD_CALLS</mutator>
+                        <mutator>NON_VOID_METHOD_CALLS</mutator>
+                        <mutator>EXPERIMENTAL_MEMBER_VARIABLE</mutator>
+                    </mutators> -->
+                </configuration>
+            </plugin>
             
         </plugins>
     </build>
