@@ -136,3 +136,4 @@ java -jar target/vroom-app.jar
 This Car Rental System allows both admins and users to perform their respective roles effectively. Admins can manage users, rental records, cars, and drivers, while users can book rentals and view their own rental history. The system demonstrates how to use JDBC to connect a Java application to a MySQL database for storing and retrieving data.
 
 
+
